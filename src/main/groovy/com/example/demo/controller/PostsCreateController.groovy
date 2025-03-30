@@ -7,12 +7,11 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 class PostsCreateController {
     @Autowired
-    PostService postsService;
+    PostService postService;
 
     @RequestMapping(path = "/new", method = RequestMethod.GET)
     public String create(Model model) {
@@ -21,7 +20,7 @@ class PostsCreateController {
 
     @RequestMapping(path = "/new", method = RequestMethod.POST)
     public String doCreate(@ModelAttribute("text") String text) {
-        postsService.create(text);
+        postService.create(text);
         return "redirect:/";
     }
 }

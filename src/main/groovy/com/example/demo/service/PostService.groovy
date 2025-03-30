@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class PostService {
-    ArrayList<Post> posts;
+    public final List<Post> posts;
 
     public PostService(){
         posts = new ArrayList<>();
         for (int i=1; i<=3; i++) {
-            posts.add(new Post(new Date(), "Пост №"+i));
+            create("Пост №"+i);
         }
     }
 
@@ -19,6 +19,6 @@ class PostService {
     }
 
     public void create(String text) {
-        posts.add(new Post(new Date(), text));
+        posts.add(new Post(posts.size(),new Date(), text));
     }
 }

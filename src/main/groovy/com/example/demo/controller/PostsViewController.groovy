@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod
 @Controller
 class PostsViewController {
     @Autowired
-    PostService postsService;
+    PostService postService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("appName", "Моё супер приложение");
-        model.addAttribute("posts", postsService.listAllPosts());
+        model.addAttribute("posts", postService.listAllPosts());
         return "list";
     }
 
