@@ -1,18 +1,17 @@
-package com.example.demo.service
+package com.example.demo.service;
 
-import com.example.demo.model.Post
-import com.example.demo.repository.PostRepository
+import com.example.demo.model.Post;
+import com.example.demo.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Service;
 
-import java.util.stream.StreamSupport
+import java.util.Date;
+import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Service
-class PostService {
-    @Autowired
-    PostRepository postRepository;
-
-    public PostService(){
+public class PostService {
+    public PostService() {
     }
 
     public List<Post> listAllPosts() {
@@ -23,4 +22,15 @@ class PostService {
         Post post = new Post(null, text, new Date());
         postRepository.save(post);
     }
+
+    public PostRepository getPostRepository() {
+        return postRepository;
+    }
+
+    public void setPostRepository(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
+    @Autowired
+    private PostRepository postRepository;
 }
